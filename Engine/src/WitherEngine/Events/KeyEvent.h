@@ -2,11 +2,9 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace WitherEngine
 {
-	class KeyEvent : public Event
+	class WIT_API KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -19,7 +17,7 @@ namespace WitherEngine
 		int m_KeyCode;
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class WIT_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode, int repeatCount)
@@ -39,7 +37,7 @@ namespace WitherEngine
 		int m_RepeatCount;
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class WIT_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keyCode)

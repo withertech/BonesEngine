@@ -2,11 +2,9 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace WitherEngine
 {
-	class WindowResizeEvent : public Event
+	class WIT_API WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -29,7 +27,7 @@ namespace WitherEngine
 		unsigned int m_Width, m_Height;
 	};
 
-	class WindowCloseEvent : public Event
+	class WIT_API WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() {}
@@ -38,7 +36,7 @@ namespace WitherEngine
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppTickEvent : public Event
+	class WIT_API AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() {}
@@ -47,7 +45,7 @@ namespace WitherEngine
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppUpdateEvent : public Event
+	class WIT_API AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() {}
@@ -56,7 +54,7 @@ namespace WitherEngine
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppRenderEvent : public Event
+	class WIT_API AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() {}

@@ -1,12 +1,11 @@
 #pragma once
-#include <memory>
-
-#include "spdlog/spdlog.h"
-#include "spdlog/fmt/ostr.h"
+#include <WitherEngine/Core.h>
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace WitherEngine
 {
-	class Log
+	class WIT_API Log
 	{
 	public:
 		static void Init();

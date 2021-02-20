@@ -1,7 +1,5 @@
 #pragma once
-#include "../Core.h"
-#include <string>
-#include <functional>
+#include <WitherEngine/Core.h>
 
 namespace WitherEngine
 {
@@ -33,8 +31,14 @@ namespace WitherEngine
 		EventCategoryMouse = BIT(3),
 		EventCategoryMouseButton = BIT(4),
 	};
+#define EVENT_CLASS_TYPE(type)                                                  \
+	static EventType GetStaticType() { return EventType::type; }                \
+	virtual EventType GetEventType() const override { return GetStaticType(); } \
+	virtual const char *GetName() const override { return #type; }
 
-	class Event
+#define EVENT_CLASS_CATEGORY(category) \
+	virtual int GetCategoryFlags() const override { return category; }
+	class WIT_API Event
 	{
 		friend class EventDispatcher;
 
@@ -52,14 +56,6 @@ namespace WitherEngine
 	protected:
 		bool m_Handled = false;
 	};
-
-#define EVENT_CLASS_TYPE(type)                                                  \
-	static EventType GetStaticType() { return EventType::type; }                \
-	virtual EventType GetEventType() const override { return GetStaticType(); } \
-	virtual const char *GetName() const override { return #type; }
-
-#define EVENT_CLASS_CATEGORY(category) \
-	virtual int GetCategoryFlags() const override { return category; }
 
 	class EventDispatcher
 	{

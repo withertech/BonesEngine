@@ -1,5 +1,6 @@
-#include "WitherEngine/Log.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+// #include <WitherEngine/Core.h>
+#include <WitherEngine/Log.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace WitherEngine
 {
