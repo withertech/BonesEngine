@@ -7,6 +7,7 @@ file(GLOB SOURCES src/WitherEngine/*.cpp)
 
 # Include header files
 include_directories(include)
+include_directories(vendor/spdlog/include)
 
 # Create shared library
 add_library(${PROJECT_NAME} SHARED ${SOURCES})

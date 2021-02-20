@@ -8,6 +8,7 @@ file(GLOB SOURCES src/*.cpp)
 # Include header files
 include_directories(include)
 include_directories(../Engine/include)
+include_directories(../Engine/vendor/spdlog/include)
 
 # Create shared library
 add_executable(${PROJECT_NAME} ${SOURCES})
