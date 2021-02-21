@@ -16,7 +16,7 @@ add_subdirectory(vendor/imgui)
 # Find source files
 file(GLOB_RECURSE SOURCES src/*.cpp)
 # Create shared library
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
+add_library(${PROJECT_NAME} STATIC ${SOURCES})
 target_precompile_headers(${PROJECT_NAME} PRIVATE src/witpch.h)
 target_compile_definitions(${PROJECT_NAME} PUBLIC GLFW_INCLUDE_NONE)
 if(WIN32)
@@ -36,6 +36,7 @@ endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_include_directories(${PROJECT_NAME} PUBLIC vendor/spdlog/include)
+target_include_directories(${PROJECT_NAME} PUBLIC vendor/debugbreak/include)
 target_include_directories(${PROJECT_NAME} PUBLIC vendor/GLFW/include)
 target_include_directories(${PROJECT_NAME} PUBLIC vendor/imgui)
 

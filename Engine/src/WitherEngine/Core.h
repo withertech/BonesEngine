@@ -1,13 +1,7 @@
 #pragma once
 #include <witpch.h>
+#include <debugbreak.h>
 #define BIT(x) (1 << x)
-#if !defined(_MSC_VER) && !defined(WIN32)
-#include <signal.h>
-#define __debugbreak()  \
-	{                   \
-		raise(SIGTRAP); \
-	}
-#endif
 
 #if defined(WIT_PLATFORM_WINDOWS)
 #ifdef WIT_BUILD_DLL
@@ -15,6 +9,7 @@
 #else
 #define WIT_API __declspec(dllimport)
 #endif
+
 #elif defined(WIT_PLATFORM_LINUX)
 #define WIT_API
 #else
@@ -27,7 +22,7 @@
 		if (!x)                                              \
 		{                                                    \
 			WIT_ERROR("Assertion Failed: {0}", __VA_ARGS__); \
-			__debugbreak();                                  \
+			debug_break();                                   \
 		}                                                    \
 	}
 #define WIT_CORE_ASSERT(x, ...)                                   \
@@ -35,7 +30,7 @@
 		if (!x)                                                   \
 		{                                                         \
 			WIT_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); \
-			__debugbreak();                                       \
+			debug_break();                                        \
 		}                                                         \
 	}
 #else
