@@ -1,10 +1,9 @@
 #include <witpch.h>
 #include <WitherEngine/Log.h>
-#include "LinuxWindow.h"
+#include "WindowsWindow.h"
 #include <WitherEngine/Events/ApplicationEvent.h>
 #include <WitherEngine/Events/MouseEvent.h>
 #include <WitherEngine/Events/KeyEvent.h>
-#include <glad/glad.h>
 
 namespace WitherEngine
 {
@@ -14,24 +13,24 @@ namespace WitherEngine
 	{
 		WIT_CORE_ERROR("GLFW Error: ({0}): {1}", error, description);
 	}
-#if defined(WIT_PLATFORM_LINUX)
+#if defined(WIT_PLATFORM_WINDOWS)
 	Window *Window::Create(const WindowProps &props)
 	{
-		return new LinuxWindow(props);
+		return new WindowsWindow(props);
 	}
 #endif
 
-	LinuxWindow::LinuxWindow(const WindowProps &props)
+	WindowsWindow::WindowsWindow(const WindowProps &props)
 	{
 		Init(props);
 	}
 
-	LinuxWindow::~LinuxWindow()
+	WindowsWindow::~WindowsWindow()
 	{
 		Shutdown();
 	}
 
-	void LinuxWindow::Init(const WindowProps &props)
+	void WindowsWindow::Init(const WindowProps &props)
 	{
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
@@ -52,8 +51,6 @@ namespace WitherEngine
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		WIT_CORE_ASSERT(status, "Failed to initialize GLAD!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height) {
@@ -132,18 +129,18 @@ namespace WitherEngine
 		});
 	}
 
-	void LinuxWindow::Shutdown()
+	void WindowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
 	}
 
-	void LinuxWindow::OnUpdate()
+	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}
 
-	void LinuxWindow::SetVSync(bool enabled)
+	void WindowsWindow::SetVSync(bool enabled)
 	{
 		if (enabled)
 			glfwSwapInterval(1);
@@ -153,7 +150,7 @@ namespace WitherEngine
 		m_Data.VSync = enabled;
 	}
 
-	bool LinuxWindow::IsVsync() const
+	bool WindowsWindow::IsVsync() const
 	{
 		return m_Data.VSync;
 	}

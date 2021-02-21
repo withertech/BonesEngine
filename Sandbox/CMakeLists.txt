@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.4.0)
-
-project(Sandbox)
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
+project(Sandbox)
+
 # Find source files
 file(GLOB SOURCES src/*.cpp)
 
