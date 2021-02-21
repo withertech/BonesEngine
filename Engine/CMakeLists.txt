@@ -21,6 +21,7 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE src/witpch.h)
 target_compile_definitions(${PROJECT_NAME} PUBLIC GLFW_INCLUDE_NONE)
 if(WIN32)
 	target_compile_definitions(${PROJECT_NAME} PUBLIC WIT_PLATFORM_WINDOWS)
+	target_compile_definitions(${PROJECT_NAME} PUBLIC WIT_BUILD_DLL)
 endif(WIN32)
 
 if(UNIX)
