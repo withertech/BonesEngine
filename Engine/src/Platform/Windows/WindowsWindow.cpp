@@ -4,6 +4,7 @@
 #include <WitherEngine/Events/ApplicationEvent.h>
 #include <WitherEngine/Events/MouseEvent.h>
 #include <WitherEngine/Events/KeyEvent.h>
+#include <glad/glad.h>
 
 namespace WitherEngine
 {
@@ -51,6 +52,8 @@ namespace WitherEngine
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		WIT_CORE_ASSERT(status, "Failed to initialize GLAD!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height) {
@@ -92,6 +95,12 @@ namespace WitherEngine
 				break;
 			}
 			}
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow *window, unsigned int keycode) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
 		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow *window, int button, int action, int mods) {
