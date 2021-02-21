@@ -10,7 +10,7 @@ public:
 
 	void OnUpdate() override
 	{
-		WIT_INFO("ExampleLayer::Update");
+		// WIT_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(WitherEngine::Event &event) override
@@ -25,6 +25,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new WitherEngine::ImGuiLayer());
 	}
 
 	~Sandbox()

@@ -16,6 +16,7 @@ namespace WitherEngine
 		AppRender,
 		KeyPressed,
 		KeyReleased,
+		KeyTyped,
 		MouseButtonPressed,
 		MouseButtonReleased,
 		MouseMoved,

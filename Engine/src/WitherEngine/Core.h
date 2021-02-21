@@ -42,3 +42,5 @@
 #define WIT_ASSERT(x, ...)
 #define WIT_CORE_ASSERT(x, ...)
 #endif
+
+#define WIT_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
