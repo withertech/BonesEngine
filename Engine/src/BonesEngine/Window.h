@@ -1,9 +1,9 @@
 #pragma once
 
-#include <WitherEngine/Core.h>
-#include <WitherEngine/Events/Event.h>
+#include <BonesEngine/Core.h>
+#include <BonesEngine/Events/Event.h>
 
-namespace WitherEngine
+namespace BonesEngine
 {
 	struct WindowProps
 	{
@@ -11,13 +11,13 @@ namespace WitherEngine
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string &title = "WitherEngine", unsigned int width = 1280, unsigned int height = 720)
+		WindowProps(const std::string &title = "BonesEngine", unsigned int width = 1280, unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}
 	};
 
-	class WIT_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event &)>;
@@ -32,6 +32,8 @@ namespace WitherEngine
 		virtual void SetEventCallback(const EventCallbackFn &callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVsync() const = 0;
+
+		virtual void *GetNativeWindow() const = 0;
 
 		static Window *Create(const WindowProps &props = WindowProps());
 	};

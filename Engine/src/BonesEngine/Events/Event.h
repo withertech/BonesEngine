@@ -1,7 +1,7 @@
 #pragma once
-#include <WitherEngine/Core.h>
+#include <BonesEngine/Core.h>
 
-namespace WitherEngine
+namespace BonesEngine
 {
 	enum class EventType
 	{
@@ -39,7 +39,7 @@ namespace WitherEngine
 
 #define EVENT_CLASS_CATEGORY(category) \
 	virtual int GetCategoryFlags() const override { return category; }
-	class WIT_API Event
+	class BNS_API Event
 	{
 		friend class EventDispatcher;
 

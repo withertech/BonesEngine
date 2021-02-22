@@ -1,20 +1,20 @@
-#include <witpch.h>
-#include <WitherEngine/Log.h>
+#include <bnspch.h>
+#include <BonesEngine/Log.h>
 #include "LinuxWindow.h"
-#include <WitherEngine/Events/ApplicationEvent.h>
-#include <WitherEngine/Events/MouseEvent.h>
-#include <WitherEngine/Events/KeyEvent.h>
+#include <BonesEngine/Events/ApplicationEvent.h>
+#include <BonesEngine/Events/MouseEvent.h>
+#include <BonesEngine/Events/KeyEvent.h>
 #include <glad/glad.h>
 
-namespace WitherEngine
+namespace BonesEngine
 {
 	static bool s_GLFWInitialized = false;
 
 	static void GLFWErrorCallback(int error, const char *description)
 	{
-		WIT_CORE_ERROR("GLFW Error: ({0}): {1}", error, description);
+		BNS_CORE_ERROR("GLFW Error: ({0}): {1}", error, description);
 	}
-#if defined(WIT_PLATFORM_LINUX)
+#if defined(BNS_PLATFORM_LINUX)
 	Window *Window::Create(const WindowProps &props)
 	{
 		return new LinuxWindow(props);
@@ -37,13 +37,13 @@ namespace WitherEngine
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		WIT_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		BNS_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
 
-			WIT_CORE_ASSERT(success, "Failed to initialize GLFW!");
+			BNS_CORE_ASSERT(success, "Failed to initialize GLFW!");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 
@@ -53,7 +53,7 @@ namespace WitherEngine
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		WIT_CORE_ASSERT(status, "Failed to initialize GLAD!");
+		BNS_CORE_ASSERT(status, "Failed to initialize GLAD!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height) {

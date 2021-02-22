@@ -1,13 +1,13 @@
 #pragma once
 
-#include <WitherEngine/Core.h>
-#include <WitherEngine/Layer.h>
+#include <BonesEngine/Core.h>
+#include <BonesEngine/Layer.h>
 
 #include <vector>
 
-namespace WitherEngine
+namespace BonesEngine
 {
-	class WIT_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();
@@ -23,6 +23,6 @@ namespace WitherEngine
 
 	private:
 		std::vector<Layer *> m_Layers;
-		std::vector<Layer *>::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 	};
 }

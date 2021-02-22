@@ -1,10 +1,10 @@
 #pragma once
 
-#include <WitherEngine/Window.h>
+#include <BonesEngine/Window.h>
 
 #include <GLFW/glfw3.h>
 
-namespace WitherEngine
+namespace BonesEngine
 {
 	class WindowsWindow : public Window
 	{
@@ -20,6 +20,8 @@ namespace WitherEngine
 		inline void SetEventCallback(const EventCallbackFn &callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVsync() const override;
+
+		inline virtual void *GetNativeWindow() const { return m_Window; }
 
 	private:
 		virtual void Init(const WindowProps &props);

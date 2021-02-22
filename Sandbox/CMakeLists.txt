@@ -11,9 +11,10 @@ file(GLOB SOURCES src/*.cpp)
 include_directories(include)
 include_directories(../Engine/include)
 include_directories(../Engine/vendor/spdlog/include)
+include_directories(../Engine/vendor/imgui/imgui)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries (${PROJECT_NAME} WitherEngine)
+target_link_libraries (${PROJECT_NAME} BonesEngine)
 
 # Install executable
 install(TARGETS ${PROJECT_NAME} DESTINATION bin/${PROJECT_NAME})

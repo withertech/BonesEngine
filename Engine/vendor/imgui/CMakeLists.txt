@@ -1,4 +1,5 @@
-project(imgui)
+cmake_minimum_required(VERSION 3.5.0)
+project(imgui VERSION 1.0.0)
 set(imgui_dir ${CMAKE_CURRENT_LIST_DIR}/imgui)
 add_library(${PROJECT_NAME}
 		${imgui_dir}/imgui_demo.cpp

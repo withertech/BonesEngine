@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Event.h"
-namespace WitherEngine
+namespace BonesEngine
 {
-	class WIT_API MouseMovedEvent : public Event
+	class BNS_API MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -26,7 +26,7 @@ namespace WitherEngine
 		float m_MouseX, m_MouseY;
 	};
 
-	class WIT_API MouseScrolledEvent : public Event
+	class BNS_API MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -49,7 +49,7 @@ namespace WitherEngine
 		float m_xOffset, m_yOffset;
 	};
 
-	class WIT_API MouseButtonEvent : public Event
+	class BNS_API MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -63,7 +63,7 @@ namespace WitherEngine
 		int m_Button;
 	};
 
-	class WIT_API MouseButtonPressedEvent : public MouseButtonEvent
+	class BNS_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -79,7 +79,7 @@ namespace WitherEngine
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class WIT_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class BNS_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

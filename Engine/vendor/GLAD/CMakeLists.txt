@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 2.4.0)
-project(GLAD)
+cmake_minimum_required(VERSION 3.5.0)
+project(GLAD VERSION 1.0.0)
 # Find source files
 file(GLOB_RECURSE SOURCES src/*.c)
 # Create shared library

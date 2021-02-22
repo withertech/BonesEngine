@@ -2,9 +2,9 @@
 
 #include "Event.h"
 
-namespace WitherEngine
+namespace BonesEngine
 {
-	class WIT_API KeyEvent : public Event
+	class BNS_API KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -17,7 +17,7 @@ namespace WitherEngine
 		int m_KeyCode;
 	};
 
-	class WIT_API KeyPressedEvent : public KeyEvent
+	class BNS_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode, int repeatCount)
@@ -37,7 +37,7 @@ namespace WitherEngine
 		int m_RepeatCount;
 	};
 
-	class WIT_API KeyReleasedEvent : public KeyEvent
+	class BNS_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keyCode)
@@ -53,7 +53,7 @@ namespace WitherEngine
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class WIT_API KeyTypedEvent : public KeyEvent
+	class BNS_API KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keyCode)

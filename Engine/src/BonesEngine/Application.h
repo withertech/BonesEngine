@@ -1,12 +1,13 @@
 #pragma once
-#include <WitherEngine/Core.h>
-#include <WitherEngine/Events/Event.h>
-#include <WitherEngine/Events/ApplicationEvent.h>
-#include <WitherEngine/Window.h>
-#include <WitherEngine/LayerStack.h>
-namespace WitherEngine
+#include <BonesEngine/Core.h>
+#include <BonesEngine/Events/Event.h>
+#include <BonesEngine/Events/ApplicationEvent.h>
+#include <BonesEngine/Window.h>
+#include <BonesEngine/LayerStack.h>
+#include <BonesEngine/ImGui/ImGuiLayer.h>
+namespace BonesEngine
 {
-	class WIT_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -26,6 +27,8 @@ namespace WitherEngine
 		bool OnWindowClose(WindowCloseEvent &e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer *m_ImGuiLayer;
+
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
